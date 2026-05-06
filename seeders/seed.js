@@ -1,3 +1,4 @@
+// seeders/seed.js
 require('dotenv').config();
 const { Product } = require('../models');
 const sequelize   = require('../config/database');
@@ -23,3 +24,4 @@ async function seed() {
     process.exit(1);
   }
 }
+seed();
