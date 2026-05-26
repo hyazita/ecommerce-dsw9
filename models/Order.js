@@ -1,4 +1,3 @@
-// models/Order.js
 const { DataTypes } = require('sequelize');
 const sequelize     = require('../config/database');
 
@@ -14,8 +13,12 @@ const Order = sequelize.define('Order', {
   phone:     { type: DataTypes.STRING,         allowNull: false },
   total:     { type: DataTypes.DECIMAL(10, 2), allowNull: false },
   paymentId: { type: DataTypes.STRING },
-  // pending | paid | payment_failed | canceled
-  status:    { type: DataTypes.STRING,         defaultValue: 'pending' }
+  status:    { type: DataTypes.STRING,         defaultValue: 'pending' },  // <-- coma aquí
+  user_id:   { 
+    type: DataTypes.INTEGER, 
+    allowNull: true, 
+    references: { model: 'users', key: 'id' } 
+  }
 });
 
 module.exports = Order;
